@@ -323,7 +323,7 @@ func HandleBlock(request []byte, bc *Blockchain) {
 
 	fmt.Printf("Added block %x\n", block.Hash)
 	fmt.Printf("Added block %d\n", block.Height)
-	UTXOSet := UTXOSet{bc}
+	//UTXOSet := UTXOSet{bc}
 	//fmt.Println(blocksInTransit)
 	if len(blocksInTransit) > 0 {
 		blockHash := blocksInTransit[0]
@@ -331,10 +331,10 @@ func HandleBlock(request []byte, bc *Blockchain) {
 
 		blocksInTransit = blocksInTransit[1:]
 	} else {
-		//UTXOSet := UTXOSet{bc}
+		UTXOSet := UTXOSet{bc}
 		UTXOSet.update(block)
+		UTXOSet.reindex()
 	}
-	UTXOSet.reindex()
 }
 
 func HandleGetData(request []byte, bc *Blockchain) {

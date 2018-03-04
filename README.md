@@ -1,4 +1,4 @@
-# vBlockchain_go
+# vBlockchain
 
 I followed the steps 1-7 to make a simple bitcoin style blockchain from https://github.com/Jeiwan/blockchain_go.
 
