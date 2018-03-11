@@ -18,7 +18,7 @@ const commandLength = 12
 
 var nodeAddress string
 var miningAddress string
-var knownNodes = []string{"localhost:3000"}
+var knownNodes = []string{"172.17.0.2:3000"}
 var blocksInTransit = [][]byte{}
 var mempool = make(map[string]Transaction)
 
@@ -433,7 +433,7 @@ func HandleTx(request []byte, bc *Blockchain) {
 
 func StartServer(nodeID, minerAddress string) {
 
-	nodeAddress = fmt.Sprintf("localhost:%s", nodeID)
+	nodeAddress = fmt.Sprintf("%s:%s", GetLocalIP(),nodeID)
 	fmt.Printf("nodeAddress is %s\n", nodeAddress)
 	miningAddress = minerAddress
 	ln, err := net.Listen(protocol, nodeAddress)
